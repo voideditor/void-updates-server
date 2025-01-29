@@ -1,9 +1,6 @@
 
 
-
-This is Void's update server. It's an endpoint that Void calls to check for updates.
-
-
+This is an endpoint that Void pings to check for updates and get a downloadURL.
 
 ## Relevant files
 
