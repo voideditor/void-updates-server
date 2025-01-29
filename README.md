@@ -1,17 +1,13 @@
 
 
 
-This is Void's updates server. It's an endpoint that Void calls to check for updates and get a download URL for them.
-
-This repo contains the main scripts we use to build Void's update and release files.
+This is Void's update server. It's an endpoint that Void calls to check for updates.
 
 
-# Void updates
 
+## Relevant files
 
-## Related files
-
-We're focused on making updates work for Mac right now. Wenever we release Void, we run `./mac.sh`. This generates a folder called VoidSign-arm64 with these contents:
+Whenever we release Void, we run `./mac.sh`. This generates a folder called VoidSign-arm64 with these contents:
 - `Void.app` (inside a `.zip` file)
 - `hash.json`
 - `Void.dmg`
@@ -41,16 +37,17 @@ JSON  			 <---------respond----------
 ```
 
 the returned JSON is of type: 
-```json
+```ts
 {
-	// where to go to get the `Void.app` `.zip` file
-	"url": "https://github.com/voideditor/void/releases/v1.0.0/Void-RawApp-darwin-arm64.zip", 
 	
-	// this is all from the latest version's hash.json for validation of the above url:
+	"url": "https://github.com/voideditor/void/releases/v1.0.0/Void-RawApp-darwin-arm64.zip",  // where to go to get the `Void.app` `.zip` file
+	
+	// ------- this is all from the latest hash.json to validate the above url -------
 	"sha256hash": "7bfd6874c1608149d9cecaab51e5cd5fca715ca0f7c3d34918017f0cbdadd81b", // sha256 hash
 	"hash": "033bd94b1168d7e4f0d644c3c95e35bf1ce6bfab", // sha1 hash
 	"timestamp": 1241241411738132963, // unix timestamp  (not really important)
 	"version": "abcdefg123", 
+	// -------------------------------------------------------------------------------
 
 	// this doesn't really matter
 	"productVersion": "1.9.4",
@@ -59,7 +56,7 @@ the returned JSON is of type:
 ```
 
 
-Right now, if you add logs to the update server, we get an error like "signature could not be verified". It's not clear if this is a hash signature issue, a mac codesigning issue, or something else.
+Right now, running everything described above, we get an error like "signature could not be verified" once `Void.app.zip` is downloaded. It's not clear if this is a hash signature issue, a mac codesigning issue, or something else.
 
 
 ## Todos
