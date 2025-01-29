@@ -1,6 +1,6 @@
 
 
-This is an endpoint that Void pings to check for updates and get a downloadURL. Entry point is https://github.com/voideditor/void-updates-server/blob/main/app/%5B...route%5D/route.ts
+This is an endpoint that Void pings to check for updates and get a downloadURL. Super simple, entry point is here: https://github.com/voideditor/void-updates-server/blob/main/app/%5B...route%5D/route.ts
 
 ## Overview
 
