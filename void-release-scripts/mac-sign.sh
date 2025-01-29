@@ -8,7 +8,7 @@ echo "-------------------- Running $1 on $2 --------------------"
 ARCH=$2
 
 
-# Required variables:
+# Required variables (store these values in mac-env.sh and copy them over to run this script):
 # ORIGINAL_DOTAPP_DIR="${HOME}/Desktop/VSCode-darwin-${ARCH}" # location of original (nothing is modified in this dir, just copied away from it)
 # WORKING_DIR="${HOME}/Desktop/VoidSign-${ARCH}" # temp dir for all the work here
 # P12_FILE="${HOME}/Desktop/sign/cert.p12"
