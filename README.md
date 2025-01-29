@@ -2,7 +2,7 @@
 
 This is an endpoint that Void pings to check for updates and get a downloadURL. Entry point is https://github.com/voideditor/void-updates-server/blob/main/app/%5B...route%5D/route.ts
 
-## Relevant Files
+## Overview
 
 Whenever we want to create a new release of Void, we run `./mac.sh`. This generates a folder called VoidSign-arm64 with these contents:
 1. `Void.app` (inside a `.zip` file)
