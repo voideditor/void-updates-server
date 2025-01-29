@@ -37,12 +37,12 @@ the returned JSON is of type:
 	
 	"url": "https://github.com/voideditor/void/releases/v1.0.0/Void-RawApp-darwin-arm64.zip",  // where to go to get the `Void.app` `.zip` file
 	
-	// ------- this is all from the latest hash.json to validate the above url -------
+	// ---------- this is from the latest hash.json to validate the above url ----------
 	"sha256hash": "7bfd6874c1608149d9cecaab51e5cd5fca715ca0f7c3d34918017f0cbdadd81b", // sha256 hash
 	"hash": "033bd94b1168d7e4f0d644c3c95e35bf1ce6bfab", // sha1 hash
 	"timestamp": 1241241411738132963, // unix timestamp  (not really important)
 	"version": "abcdefg123", 
-	// -------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------
 
 	// this doesn't really matter
 	"productVersion": "1.9.4",
