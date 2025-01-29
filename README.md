@@ -41,7 +41,7 @@ the returned JSON is of type:
 	"sha256hash": "7bfd6874c1608149d9cecaab51e5cd5fca715ca0f7c3d34918017f0cbdadd81b", // sha256 hash
 	"hash": "033bd94b1168d7e4f0d644c3c95e35bf1ce6bfab", // sha1 hash
 	"timestamp": 1241241411738132963, // unix timestamp  (not really important)
-	"version": "abcdefg123", 
+	"version": "abcdefg123", // latest commit hash 
 	// ---------------------------------------------------------------------------------
 
 	// this doesn't really matter
