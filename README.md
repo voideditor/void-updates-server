@@ -2,23 +2,21 @@
 
 This is an endpoint that Void pings to check for updates and get a downloadURL.
 
-## Relevant files
+## Relevant Files
 
-Whenever we release Void, we run `./mac.sh`. This generates a folder called VoidSign-arm64 with these contents:
-- `Void.app` (inside a `.zip` file)
-- `hash.json`
-- `Void.dmg`
+Whenever we want to create a new release of Void, we run `./mac.sh`. This generates a folder called VoidSign-arm64 with these contents:
+1. `Void.app` (inside a `.zip` file)
+2. `hash.json`
+3. `Void.dmg`
 
-`Void.app` is the raw file that actually runs Void. This is what's supposed to get downloaded when an update is ready, and then hot-swapped in to update Void.
+- `Void.app` is the raw file that actually runs Void. Updates work by simply swapping in a new version of this.
 
-
-`hash.json` is used during updates to verify verify `Void.app` was not corrupted. It's of type `{ sha256hash, hash: sha1, timestamp: UNIX }`. 
-
-`Void.dmg` is the installer for Void. It's just a wrapper that tells people to drag `Void.app` into their Applications folder. It's unrelated to updating Void.
+- `hash.json` are hashes to make sure `Void.app` was not corrupted on download. 
+- `Void.dmg` is the installer for Void. Just a wrapper around `Void.app`, not used in updating.
 
 
 
-## Updating flow
+## Updating Flow
 
 Here's how updating is intended to work. Reference [`abstractUpdateService.ts`](https://github.com/voideditor/void/blob/c1123f2cfd570e744e0e867f5f53d0c108c32c97/src/vs/platform/update/electron-main/abstractUpdateService.ts#L18) for Void Desktop implementation.
 
