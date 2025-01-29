@@ -17,7 +17,7 @@ Whenever we want to create a new release of Void, we run `./mac.sh`. This genera
 
 ## Updating Flow
 
-Here's how updating is intended to work. Reference [`abstractUpdateService.ts`](https://github.com/voideditor/void/blob/c1123f2cfd570e744e0e867f5f53d0c108c32c97/src/vs/platform/update/electron-main/abstractUpdateService.ts#L18) for Void Desktop implementation.
+Here's how updating is intended to work. Reference [`abstractUpdateService.ts`](https://github.com/voideditor/void/blob/c1123f2cfd570e744e0e867f5f53d0c108c32c97/src/vs/platform/update/electron-main/abstractUpdateService.ts#L18).
 
 First, Void pings the update server (this repo) which lives on `https://updates.voideditor.dev/<product>/stable/<commit>`. (product is something like darwin-arm64, and commit is the commit hash, e.g. abcdefg123).
 
