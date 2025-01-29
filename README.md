@@ -29,11 +29,12 @@ First, Void pings the update server (this repo) which lives on `https://updates.
 
 Here's what happens next:
 
-```plaintext
-Void on Desktop                                update server 
-       			 -----check for update------>
-												- compare latest commit hash with user's, and if not equal the the user should update so respond with a JSON (else return with status 204)
-JSON  			 <---------respond----------
+```
+Void on Desktop                                update server
+                -----check for update------>
+                                                  - compare latest commit hash with user's commit hash
+                                                  - if not equal, respond with a JSON
+JSON            <---------respond----------
 ```
 
 the returned JSON is of type: 
