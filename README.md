@@ -10,7 +10,6 @@ Whenever we want to create a new release of Void, we run `./mac.sh`. This genera
 3. `Void.dmg`
 
 - `Void.app` is the raw file that actually runs Void. Updates work by simply swapping in a new version of this.
-
 - `hash.json` are hashes to make sure `Void.app` was not corrupted on download. 
 - `Void.dmg` is the installer for Void. Just a wrapper around `Void.app`, not used in updating.
 
