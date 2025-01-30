@@ -53,6 +53,8 @@ the returned JSON is of type:
 
 Right now, running everything described above, we get an error like "signature could not be verified" once `Void.app.zip` is downloaded. It's not clear if this is a hash signature issue, a mac codesigning issue, or something else.
 
+So we're not using the built-in auto-updater right now, and instead we're prompting the user to update manually (not ideal).
+
 
 ## Todos
 
