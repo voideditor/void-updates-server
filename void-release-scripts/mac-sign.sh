@@ -11,12 +11,23 @@ ARCH=$2
 # Required variables (store these values in mac-env.sh and copy them over to run this script):
 # ORIGINAL_DOTAPP_DIR="${HOME}/Desktop/VSCode-darwin-${ARCH}" # location of original (nothing is modified in this dir, just copied away from it)
 # WORKING_DIR="${HOME}/Desktop/VoidSign-${ARCH}" # temp dir for all the work here
+# VOID_DIR="${HOME}/Desktop/void"
 # P12_FILE="${HOME}/Desktop/sign/cert.p12"
 # P12_PASSWORD="..."
 # APPLE_ID="..."
 # TEAM_ID="..."
 # APP_PASSWORD="..." # see https://appleid.apple.com
 # CODESIGN_IDENTITY="Developer ID Application: ..." # try `security find-identity -v -p codesigning`
+
+
+
+
+
+# Check if all required variables are set
+if [ -z "$ORIGINAL_DOTAPP_DIR" ] || [ -z "$WORKING_DIR" ] || [ -z "$P12_FILE" ] || [ -z "$P12_PASSWORD" ] || [ -z "$APPLE_ID" ] || [ -z "$TEAM_ID" ] || [ -z "$APP_PASSWORD" ] || [ -z "$CODESIGN_IDENTITY" ]; then
+    echo "Error: Make sure to set all variables."
+    exit 1
+fi
 
 
 ## computed
