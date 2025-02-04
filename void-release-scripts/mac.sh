@@ -1,4 +1,5 @@
 # Do not run this unless you know what you're doing.
+# Don't run this when Void is open, or Mac will confuse the two versions (run in terminal or VS Code). 
 
 set -e
 

@@ -44,7 +44,7 @@ sign() {
     mkdir "${KEYCHAIN_DIR}"
     mkdir "${SIGN_DIR}"
 
-    cp -Rp $ORIGINAL_DOTAPP_DIR $SIGN_DIR
+    cp -Rp "${ORIGINAL_DOTAPP_DIR}" "${SIGN_DIR}"
 
 
     echo "-------------------- 1. Make temp keychain --------------------"
