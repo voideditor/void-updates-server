@@ -41,8 +41,8 @@ SIGNED_DOTAPP="${SIGN_DIR}/VSCode-darwin-${ARCH}/Void.app"
 SIGNED_DMG_DIR="${SIGN_DIR}/VSCode-darwin-${ARCH}"
 SIGNED_DMG="${SIGN_DIR}/VSCode-darwin-${ARCH}/Void-Installer-darwin-${ARCH}.dmg"
 
-ORIGINAL_SERVER_DIR="${HOME}/Desktop/void-reh-darwin-${ARCH}"
-PACKAGED_SERVER_DIR="${HOME}/Desktop/VoidServer-darwin-${ARCH}"
+ORIGINAL_SERVER_DIR="${WORKING_DIR}/3_REH/void-reh-darwin-${ARCH}"
+PACKAGED_SERVER_DIR="${WORKING_DIR}/3_REH/VoidServer-darwin-${ARCH}"
 
 
 echo $KEYCHAIN_DIR
