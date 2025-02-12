@@ -7,7 +7,7 @@ set -e
 # Build, sign and package arm64
 ./mac-sign.sh build arm64
 ./mac-sign.sh sign arm64
-./mac-sign.sh notarize arm64 
+./mac-sign.sh notarize arm64
 ./mac-sign.sh updater arm64
 ./mac-sign.sh hash arm64
 ./package-server.sh build arm64 darwin
