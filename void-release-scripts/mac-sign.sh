@@ -41,6 +41,10 @@ SIGNED_DOTAPP="${SIGN_DIR}/VSCode-darwin-${ARCH}/Void.app"
 SIGNED_DMG_DIR="${SIGN_DIR}/VSCode-darwin-${ARCH}"
 SIGNED_DMG="${SIGN_DIR}/VSCode-darwin-${ARCH}/Void-Installer-darwin-${ARCH}.dmg"
 
+ORIGINAL_SERVER_DIR="${HOME}/Desktop/void-reh-darwin-${ARCH}"
+PACKAGED_SERVER_DIR="${HOME}/Desktop/VoidServer-darwin-${ARCH}"
+
+
 echo $KEYCHAIN_DIR
 
 
@@ -188,6 +192,16 @@ case "$1" in
 	hash)
 		hash
 		;;
+
+ buildreh)
+        cd "${VOID_DIR}"
+        npm run gulp "vscode-reh-darwin-${ARCH}-min"
+        ;;
+   packagereh)
+        rm -rf "${PACKAGED_SERVER_DIR}"
+        mkdir -p "${PACKAGED_SERVER_DIR}"
+        tar -czf "${PACKAGED_SERVER_DIR}/void-server-darwin-${ARCH}.tar.gz" -C "$(dirname "$ORIGINAL_SERVER_DIR")" "$(basename "$ORIGINAL_SERVER_DIR")"
+        ;;
     *)
         echo $USAGE
         exit 1

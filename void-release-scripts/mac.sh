@@ -10,8 +10,9 @@ set -e
 ./mac-sign.sh notarize arm64
 ./mac-sign.sh updater arm64
 ./mac-sign.sh hash arm64
-./package-server.sh build arm64 darwin
-./package-server.sh package arm64 darwin
+
+./mac-sign.sh buildreh arm64
+./mac-sign.sh packagereh arm64
 
 # Build, sign and package x64
 ./mac-sign.sh build x64
@@ -19,5 +20,6 @@ set -e
 ./mac-sign.sh notarize x64
 ./mac-sign.sh updater x64
 ./mac-sign.sh hash x64
-./package-server.sh build x64 darwin
-./package-server.sh package x64 darwin
+
+./mac-sign.sh buildreh x64
+./mac-sign.sh packagereh x64
