@@ -10,6 +10,7 @@ ARCH=$2
 
 # Required variables (store these values in mac-env.sh and copy them over to run this script):
 # ORIGINAL_DOTAPP_DIR="${HOME}/Desktop/VSCode-darwin-${ARCH}" # location of original (nothing is modified in this dir, just copied away from it)
+# ORIGINAL_REH_DIR="${HOME}/Desktop/vscode-reh-darwin-${ARCH}"
 # WORKING_DIR="${HOME}/Desktop/VoidSign-${ARCH}" # temp dir for all the work here
 # VOID_DIR="${HOME}/Desktop/void"
 # P12_FILE="${HOME}/Desktop/sign/cert.p12"
@@ -41,11 +42,6 @@ SIGNED_DOTAPP="${SIGN_DIR}/VSCode-darwin-${ARCH}/Void.app"
 SIGNED_DMG_DIR="${SIGN_DIR}/VSCode-darwin-${ARCH}"
 SIGNED_DMG="${SIGN_DIR}/VSCode-darwin-${ARCH}/Void-Installer-darwin-${ARCH}.dmg"
 
-ORIGINAL_SERVER_DIR="${WORKING_DIR}/3_REH/void-reh-darwin-${ARCH}"
-PACKAGED_SERVER_DIR="${WORKING_DIR}/3_REH/VoidServer-darwin-${ARCH}"
-
-
-echo $KEYCHAIN_DIR
 
 
 
@@ -66,8 +62,8 @@ sign() {
     # Create a new keychain
     security create-keychain -p pwd "${KEYCHAIN}"
     security set-keychain-settings -lut 21600 "${KEYCHAIN}"
-    security unlock-keychain -p pwd "${KEYCHAIN}"
 
+    security unlock-keychain -p pwd "${KEYCHAIN}"
 
     # Import your p12 certificate
     security import "${P12_FILE}" -k "${KEYCHAIN}" -P "${P12_PASSWORD}" -T /usr/bin/codesign
@@ -131,16 +127,20 @@ notarize(){
 }
 
 
-updater(){
+rawapp() {
 	cd "${SIGNED_DOTAPP_DIR}"
-	echo "Zipping updater here..."
+	echo "Zipping rawapp here..."
+
 	VOIDAPP=$(basename $SIGNED_DOTAPP)
-    ditto -c -k --sequesterRsrc --keepParent "${VOIDAPP}" "Void-RawApp-darwin-${ARCH}.zip"
+    ZIPNAME="Void-RawApp-darwin-${ARCH}.zip"
+    # ZIPPEDAPP="${SIGNED_DOTAPP_DIR}/${ZIPNAME}"
+    ditto -c -k --sequesterRsrc --keepParent "${VOIDAPP}" "${ZIPNAME}"
+
 	echo "Done!"
 }
 
 
-hash() {
+hashrawapp() {
     cd "${SIGNED_DOTAPP_DIR}"
 
     SHA1=$(shasum -a 1 "${SIGNED_DOTAPP_DIR}/Void-RawApp-darwin-${ARCH}.zip" | cut -d' ' -f1)
@@ -159,7 +159,7 @@ EOF
 }
 
 
-USAGE="Usage: $0 {sign|notarize|updater|hash} {arm64|x64}"
+USAGE="Usage: $0 {sign|notarize|rawapp|hashrawapp} {arm64|x64}"
 
 # check to make sure arm64 or x64 is specified
 case "$2" in
@@ -186,11 +186,11 @@ case "$1" in
     notarize)
         notarize
         ;;
-	updater)
-		updater
+	rawapp)
+		rawapp
 		;;
-	hash)
-		hash
+	hashrawapp)
+		hashrawapp
 		;;
 
  buildreh)
@@ -198,9 +198,7 @@ case "$1" in
         npm run gulp "vscode-reh-darwin-${ARCH}-min"
         ;;
    packagereh)
-        rm -rf "${PACKAGED_SERVER_DIR}"
-        mkdir -p "${PACKAGED_SERVER_DIR}"
-        tar -czf "${PACKAGED_SERVER_DIR}/void-server-darwin-${ARCH}.tar.gz" -C "$(dirname "$ORIGINAL_SERVER_DIR")" "$(basename "$ORIGINAL_SERVER_DIR")"
+        tar -czf "${SIGNED_DOTAPP_DIR}/void-server-darwin-${ARCH}.tar.gz" -C "$(dirname "$ORIGINAL_REH_DIR")" "$(basename "$ORIGINAL_REH_DIR")"
         ;;
     *)
         echo $USAGE
