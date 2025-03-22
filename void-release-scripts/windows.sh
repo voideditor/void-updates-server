@@ -13,3 +13,4 @@ npm run gulp vscode-win32-x64-system-setup
 
 # output is in .build/... 
 
+# CHECK COMMIT HASH - make sure it's the same for windows, mac, etc
