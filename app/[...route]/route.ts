@@ -34,9 +34,14 @@ export const preferredRegion = 'auto'
 // const latestCommit = 'a6b4955f8d834a6de97db5315dcd70551fb03c7c'
 // const latestVersionTag = 'v1.0.1'
 
-const latestCommit = 'a3f145328bc505f44034872c6f9aca54c31a9470'
-const latestVersionTag = 'v1.0.2'
+// const latestCommit = 'a3f145328bc505f44034872c6f9aca54c31a9470'
+// const latestVersionTag = 'v1.0.2' // was also called 1.0.2
+// requires a URL in the message string; all we give them is the message
 
+const latestCommit = '47998e4ee5b6dcd8a6df9ec68dd56518c9903a7d'
+const latestVersionTagForMessage = 'v1.0.2'
+// has hard-coded link to https://voideditor.com/download-beta for updating
+// has reh download at https://github.com/voideditor/void-updates-server/releases/download/test/void-server-{os}-{arch}.tar.gz
 
 console.log('booting')
 
@@ -59,7 +64,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ rout
         if (_v0 !== 'v0') throw err('v0')
 
         if (commit !== latestCommit)
-            return Response.json({ hasUpdate: true, downloadMessage: `A new Void update is available. [Void ${latestVersionTag}](https://voideditor.com/download-beta). Please reinstall! It only takes a second.` })
+            return Response.json({ hasUpdate: true, downloadMessage: `A new Void update is available. [Void ${latestVersionTagForMessage}](https://voideditor.com/download-beta). Please reinstall! It only takes a second.` })
 
         return Response.json({ hasUpdate: false })
 
