@@ -63,7 +63,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ rout
         if (_api !== 'api') throw err('api')
         if (_v0 !== 'v0') throw err('v0')
 
-        if (commit !== '47998e4ee5b6dcd8a6df9ec68dd56518c9903a7d' && commit !== '6ecf7be826778a3d34bdf0aa2ad3d1d2cac7b65e')
+        if (commit !== '47998e4ee5b6dcd8a6df9ec68dd56518c9903a7d' && commit !== '6ecf7be826778a3d34bdf0aa2ad3d1d2cac7b65e' && commit !== '6fd514230ce5e392dac90420f001718dcf985d2b')
             return Response.json({ hasUpdate: true, downloadMessage: `A new Void update is available. [Void ${latestVersionTagForMessage}](https://voideditor.com/download-beta). Please reinstall! It only takes a second.` })
 
         return Response.json({ hasUpdate: false })
