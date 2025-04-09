@@ -63,7 +63,13 @@ export async function GET(request: Request, { params }: { params: Promise<{ rout
         if (_api !== 'api') throw err('api')
         if (_v0 !== 'v0') throw err('v0')
 
-        if (commit !== '6fd514230ce5e392dac90420f001718dcf985d2b' && commit !== '47998e4ee5b6dcd8a6df9ec68dd56518c9903a7d' && commit !== '6ecf7be826778a3d34bdf0aa2ad3d1d2cac7b65e' && commit !== 'f75b4f34d86d7e7c7dd04622641d7c2a9e3dbb73')
+        if (commit !== '6fd514230ce5e392dac90420f001718dcf985d2b' &&
+            commit !== '47998e4ee5b6dcd8a6df9ec68dd56518c9903a7d' &&
+            commit !== '6ecf7be826778a3d34bdf0aa2ad3d1d2cac7b65e' &&
+            commit !== 'f75b4f34d86d7e7c7dd04622641d7c2a9e3dbb73' &&
+            commit !== '5fde9194af08d97102bba5f0585551b59cc1eead' // canary 1.0.3
+
+        )
             return Response.json({ hasUpdate: true, downloadMessage: `A new Void update is available. [Void ${latestVersionTagForMessage}](https://voideditor.com/download-beta). Please reinstall! It only takes a second.` })
 
         return Response.json({ hasUpdate: false })
