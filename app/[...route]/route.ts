@@ -70,7 +70,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ rout
             commit !== '5fde9194af08d97102bba5f0585551b59cc1eead' // canary 1.0.3
 
         )
-            return Response.json({ hasUpdate: true, downloadMessage: `A new Void update is available. [Void ${latestVersionTagForMessage}](https://voideditor.com/download-beta). Please reinstall! It only takes a second.` })
+            return Response.json({ hasUpdate: true, downloadMessage: `A new Void update is available. [Void ${latestVersionTagForMessage}](https://voideditor.com/download-beta). Please reinstall! It only takes a second. This is the last time you have to reinstall.` })
 
         return Response.json({ hasUpdate: false })
 
