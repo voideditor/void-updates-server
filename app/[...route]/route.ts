@@ -39,7 +39,7 @@ export const preferredRegion = 'auto'
 // requires a URL in the message string; all we give them is the message
 
 // const latestCommit = '6fd514230ce5e392dac90420f001718dcf985d2b' // accidentally a few other things for a second
-const latestVersionTagForMessage = 'v1.0.2'
+const latestVersionTagForMessage = 'v1.2.4'
 // has hard-coded link to https://voideditor.com/download-beta for updating
 // has reh download at https://github.com/voideditor/void-updates-server/releases/download/test/void-server-{os}-{arch}.tar.gz
 
@@ -59,18 +59,20 @@ export async function GET(request: Request, { params }: { params: Promise<{ rout
 
         if (route.length !== 3) throw err('!=3')
 
-        const [_api, _v0, commit] = route
+        const [_api, _v0, _commit] = route
         if (_api !== 'api') throw err('api')
         if (_v0 !== 'v0') throw err('v0')
 
-        if (commit !== '6fd514230ce5e392dac90420f001718dcf985d2b' &&
-            commit !== '47998e4ee5b6dcd8a6df9ec68dd56518c9903a7d' &&
-            commit !== '6ecf7be826778a3d34bdf0aa2ad3d1d2cac7b65e' &&
-            commit !== 'f75b4f34d86d7e7c7dd04622641d7c2a9e3dbb73' &&
-            commit !== '5fde9194af08d97102bba5f0585551b59cc1eead' // canary 1.0.3
+        if (
+            _commit !== '' // tell everyone to reinstall
+            // commit !== '6fd514230ce5e392dac90420f001718dcf985d2b' &&
+            // commit !== '47998e4ee5b6dcd8a6df9ec68dd56518c9903a7d' &&
+            // commit !== '6ecf7be826778a3d34bdf0aa2ad3d1d2cac7b65e' &&
+            // commit !== 'f75b4f34d86d7e7c7dd04622641d7c2a9e3dbb73' &&
+            // commit !== '5fde9194af08d97102bba5f0585551b59cc1eead' // canary 1.0.3
 
         )
-            return Response.json({ hasUpdate: true, downloadMessage: `A new Void update is available. [Void ${latestVersionTagForMessage}](https://voideditor.com/download-beta). Please reinstall! It only takes a second. This is the last time you have to reinstall.` })
+            return Response.json({ hasUpdate: true, downloadMessage: `A new Void update is available. [Void ${latestVersionTagForMessage}](https://voideditor.com/download-beta). Please reinstall! It only takes a second, and this is the last time you need to reinstall!` })
 
         return Response.json({ hasUpdate: false })
 
